@@ -2,7 +2,6 @@ package nl.han.bewd.lambdas;
 
 import nl.han.bewd.lambdas.reis.*;
 
-import java.util.Random;
 
 public class Main {
     /*
@@ -22,9 +21,15 @@ public class Main {
         mijnReis.simuleerReis(new OVVervoerStrategy());   // Met OV
 
         System.out.println("Met <nieuw> vervoer (Stap 2)  ");
-        System.out.println("TODO:");
+        mijnReis.simuleerReis(new TrebuchetVervoerStrategy());
 
         System.out.println("Met <nieuw> vervoer, lambda edition! (Stap 5)");
-        System.out.println("TODO:");
-    }
+        mijnReis.simuleerReis((isReisTijdensSpits) -> {
+            if (isReisTijdensSpits) {
+                return 3;
+            } else {
+                return 2;
+            }
+        });
+    };
 }
